@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "630306292932",
+    "project_id": "movelk",
+    "storage_bucket": "movelk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630306292932:android:e8fd1e96ebb0df2c5df591",
+        "android_client_info": {
+          "package_name": "com.keshbatman.MoveLK"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsCaH2euCUBuqvAJc_UzkWc7yAA724iYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630306292932:android:b7dada55826161db5df591",
+        "android_client_info": {
+          "package_name": "com.keshbatman.MoveLk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsCaH2euCUBuqvAJc_UzkWc7yAA724iYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

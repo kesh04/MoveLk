@@ -2,6 +2,12 @@
   "expo": {
     "name": "MoveLK",
     "slug": "MoveLK",
+    "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "expo-location",
+      "expo-font"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,13 +21,26 @@
       "supportsTablet": true
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "permissions":["ACCESS_COARSE_LOCATION","ACCESS_FINE_LOCATION","FOREGROUND_SERVICE"],
+      "package": "com.keshbatman.MoveLK",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBmvZ2jkhmywKqcssdMVA-zRIqNq0JdQW8"
+        }
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "69e78d10-01b3-43b3-a332-ba69760c6534"
+      }
     }
   }
 }
