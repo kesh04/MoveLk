@@ -1,21 +1,28 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TouchableOpacity, TextInput } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, TextInput, Alert } from "react-native";
 import firestore from "@react-native-firebase/firestore";
 
 const Detail = ({ route, navigation }) => {
-  const { uid } = route.params;
+  const { uid } = route.params; // Retrieve uid from route parameters
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
   const handleSubmit = async () => {
+    if (!name || !email) {
+      Alert.alert("Validation Error", "Please enter both name and email.");
+      return;
+    }
+
     try {
       await firestore().collection("user").doc(uid).set({
         name,
         email,
       });
+      Alert.alert("Success", "Your details have been saved.");
       navigation.navigate("TabNavigation");
     } catch (error) {
       console.log("Error saving user details", error);
+      Alert.alert("Error", "There was an error saving your details. Please try again.");
     }
   };
 
