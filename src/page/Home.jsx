@@ -16,6 +16,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { getStatusBarHeight } from "react-native-status-bar-height";
 import { EvilIcons } from "@expo/vector-icons";
 
+
 export default function Home() {
   const navigation = useNavigation();
   useLayoutEffect(() => {
@@ -39,10 +40,8 @@ export default function Home() {
   };
 
   return (
-   
     <View style={styles.container}>
       <View style={styles.header}>
-      
         <Text style={styles.text1}>Select Your Loaction </Text>
 
         <Pressable style={styles.inputContainer} onPress={search}>
@@ -59,33 +58,102 @@ export default function Home() {
               name="search"
               size={24}
               color="black"
-             
             />
           </View>
         </Pressable>
       </View>
 
-        <Pressable onPress={search} style={styles.home}>
-          <Image
-            source={require("../../assets/images/bus.png")}
-            style={styles.img1}
-          />
-          <Text style={{ padding:10,textAlign:"center", fontSize:30}}>D.S. PVT </Text>
+      <Pressable onPress={search} style={styles.home}>
+        <Image
+          source={require("../../assets/images/bus.png")}
+          style={styles.img1}
+        />
+        <Text style={{ padding: 10, textAlign: "center", fontSize: 30 }}>
+          D.S. PVT{" "}
+        </Text>
+      </Pressable>
+
+      <Text
+        style={{
+          marginHorizontal: 30,
+          fontSize: 17,
+          fontWeight: "500",
+          marginTop: 20,
+        }}
+      >
+      Enjoy With Us 🚍 We are MOVELK
+      </Text>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <Pressable
+          style={{
+            width: 200,
+            height: 150,
+            marginTop: 10,
+            backgroundColor: "#FED339",
+            borderRadius: 10,
+            padding:20,
+            marginHorizontal:20,
+            top:20
+          }}
+        >
+          <Text style={{ color:"black",fontSize:15, fontWeight:'bold', marginVertical:7}}>RATHANA TRAVELS</Text>
+          <Text style={{ color:"black",fontSize:15, fontWeight:'500', marginVertical:7}}>JOIN WITH MOVELK 😃 </Text>
         </Pressable>
-     
+        <Pressable
+          style={{
+            width: 200,
+            height: 150,
+            marginTop: 10,
+            backgroundColor: "#FED339",
+            borderRadius: 10,
+            padding:20,
+            marginHorizontal:20,
+            top:20
+          }}
+        >
+          <Text style={{ color:"black",fontSize:15, fontWeight:'bold', marginVertical:7}}>RATHANA TRAVELS</Text>
+          <Text style={{ color:"black",fontSize:15, fontWeight:'500', marginVertical:7}}>JOIN WITH MOVELK 😃 </Text>
+        </Pressable>
+        <Pressable
+          style={{
+            width: 200,
+            height: 150,
+            marginTop: 10,
+            backgroundColor: "#FFDEAD",
+            borderRadius: 10,
+            padding:20,
+            marginHorizontal:20, 
+            top:20
+          }}
+        >
+          <Text style={{ color:"black",fontSize:15, fontWeight:'bold', marginVertical:7}}>RATHANA TRAVELS</Text>
+          <Text style={{ color:"black",fontSize:15, fontWeight:'500', marginVertical:7}}>JOIN WITH MOVELK 😃 </Text>
+        </Pressable>
+
+
+      </ScrollView>
+      <Pressable style={{marginTop: 30, justifyContent:"center",alignItems:"center"}}>
+          <Text style={{fontSize: 30,top:-10, color:"#ffdb0b", fontWeight:"700"}}>MOVELK</Text>
+        </Pressable>
+ 
     </View>
-  
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     height: "100%",
-    
   },
   header: {
     height: "30%",
     borderRadius: 10,
+  },
+  kesh:{
+    color:"green",
+  },
+  keshPink:{
+    color:"yellow",
   },
   input: {
     height: 55,
@@ -100,12 +168,12 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 30,
     marginHorizontal: 20,
-  textAlign:"center"
+    textAlign: "center",
   },
   img1: {
     width: "100%",
     height: 170,
-    bottom:-20
+    bottom: -20,
   },
   button: {
     alignItems: "center",
@@ -124,14 +192,10 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginHorizontal: 16,
-
-    
   },
-  home:{
-    backgroundColor:"#FED339",
+  home: {
     borderRadius: 30,
-    marginHorizontal:30,
+    marginHorizontal: 30,
     marginTop: -50,
-    
-  }
+  },
 });
