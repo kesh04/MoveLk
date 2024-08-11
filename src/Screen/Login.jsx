@@ -1,7 +1,5 @@
-
-
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, TextInput, Alert } from "react-native";
+import { View, Text, TouchableOpacity, TextInput, Alert, StyleSheet } from "react-native";
 import auth from "@react-native-firebase/auth";
 import firestore from "@react-native-firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
@@ -23,7 +21,7 @@ const Login = () => {
     const unsubscribe = auth().onAuthStateChanged(user => {
       if (user) {
         // User is signed in
-        navigation.navigate("TabNavigation");// Redirect to Home screen
+        navigation.navigate("TabNavigation"); // Redirect to Home screen
       }
     });
 
@@ -86,70 +84,86 @@ const Login = () => {
   };
 
   return (
-    <View style={{ flex: 1, padding: 10, backgroundColor: "#BEBDB8" }}>
-      <Text style={{ fontSize: 32, fontWeight: "bold", marginBottom: 40, marginTop: 150 }}>Login</Text>
+    <View style={styles.container}>
+      <Text style={styles.header}>LOGIN</Text>
       {!confirm ? (
         <>
-          <Text style={{ marginBottom: 20, fontSize: 18 }}>Enter your phone number</Text>
+          <Text style={styles.label}>Enter your phone number</Text>
           <TextInput
-            style={{
-              height: 50,
-              width: "100%",
-              borderColor: "black",
-              borderWidth: 1,
-              marginBottom: 30,
-              paddingHorizontal: 10,
-            }}
+            style={styles.input}
             placeholder="e.g., +94 123 456 7890"
             value={phoneNumber}
             onChangeText={setPhoneNumber}
+            keyboardType="phone-pad"
           />
           <TouchableOpacity
             onPress={signInWithPhoneNumber}
-            style={{
-              backgroundColor: "#FED339",
-              padding: 10,
-              borderRadius: 5,
-              marginBottom: 20,
-              alignItems: "center",
-            }}
+            style={[styles.button, { opacity: remainingAttempts <= 0 ? 0.5 : 1 }]}
             disabled={remainingAttempts <= 0} // Disable button if no remaining attempts
           >
-            <Text style={{ color: "black", fontSize: 22, fontWeight: "bold" }}>Send Code</Text>
+            <Text style={styles.buttonText}>Send Code</Text>
           </TouchableOpacity>
         </>
       ) : (
         <>
-          <Text style={{ marginBottom: 20, fontSize: 18 }}>Enter OTP</Text>
+          <Text style={styles.label}>Enter OTP</Text>
           <TextInput
-            style={{
-              height: 50,
-              width: "100%",
-              borderColor: "black",
-              borderWidth: 1,
-              marginBottom: 30,
-              paddingHorizontal: 10,
-            }}
+            style={styles.input}
             placeholder="Enter code"
             value={code}
             onChangeText={setCode}
+            keyboardType="number-pad"
           />
           <TouchableOpacity
             onPress={confirmCode}
-            style={{
-              backgroundColor: "#FED339",
-              padding: 10,
-              borderRadius: 5,
-              marginBottom: 20,
-              alignItems: "center",
-            }}
+            style={styles.button}
           >
-            <Text style={{ color: "black", fontSize: 22, fontWeight: "bold" }}>Confirm Code</Text>
+            <Text style={styles.buttonText}>Confirm Code</Text>
           </TouchableOpacity>
         </>
       )}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: "#BEBDB8",
+    justifyContent: "center",
+  },
+  header: {
+    fontSize: 32,
+    fontWeight: "bold",
+    marginBottom: 40,
+    alignSelf: "center",
+  },
+  label: {
+    marginBottom: 20,
+    fontSize: 18,
+    textAlign: "center",
+  },
+  input: {
+    height: 50,
+    width: "100%",
+    borderColor: "black",
+    borderWidth: 1,
+    marginBottom: 30,
+    paddingHorizontal: 10,
+    borderRadius: 5,
+  },
+  button: {
+    backgroundColor: "#FED339",
+    padding: 15,
+    borderRadius: 5,
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "black",
+    fontSize: 22,
+    fontWeight: "bold",
+  },
+});
 
 export default Login;
